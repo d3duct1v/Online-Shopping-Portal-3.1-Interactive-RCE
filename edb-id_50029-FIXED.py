@@ -1,10 +1,10 @@
 # Exploit Title: Online Shopping Portal 3.1 - Remote Code Execution (Unauthenticated)
-# Date: 17.06.2021
+# Date: 17.07.2021
 # Original Exploit Author: Tagoletta (Tağmaç)
 # EDB-ID: 50029
 # Software Link: https://phpgurukul.com/shopping-portal-free-download/
 # Version: V3.1
-# Tested on: Ubuntu
+# Tested on: Windows
 
 import requests
 import random
