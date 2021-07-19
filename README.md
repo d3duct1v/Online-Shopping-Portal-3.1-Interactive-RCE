@@ -6,7 +6,7 @@ Original Exploit Author: Tagoletta (Tağmaç)\
 Original EDB-ID: 50029\
 Software Link: https://phpgurukul.com/shopping-portal-free-download/ \
 Version: v1.0\
-Tested on: Windows\
+Tested on: Windows
 
 ---
 # Manual Exploit Details
