@@ -37,9 +37,9 @@ Then use curl to interact with the backdoor: `http://<site>/shopping/admin/produ
 Running the python script found within this repo uses Python 3 and needs the requests package \
 The script can be started `# python3 script.py -u <target URL minus /shopping>` 
 
-The script will bypass the authentication upload a backdoor with a product name and image name. \
+The script will bypass the authentication and upload a backdoor with a product name and image name. \
 It will then find the backdoor and attempt to connect to and run a current directory echo command. \
-Once successful will drop into a interactive command prompt, this will run system commands but not a full shell. 
+Once successful will drop into an interactive command prompt, this will run system commands but not a full shell. 
 
 # Metasploit module
 
